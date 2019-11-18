@@ -34,6 +34,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Añadir = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.listacon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroLbl = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.tablero = new System.Windows.Forms.Panel();
@@ -51,6 +53,7 @@
             this.Edad = new System.Windows.Forms.RadioButton();
             this.button3 = new System.Windows.Forms.Button();
             this.Añadir.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tablero.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +101,7 @@
             // Añadir
             // 
             this.Añadir.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Añadir.Controls.Add(this.dataGridView1);
             this.Añadir.Controls.Add(this.numeroLbl);
             this.Añadir.Controls.Add(this.button4);
             this.Añadir.Controls.Add(this.tablero);
@@ -122,6 +126,26 @@
             this.Añadir.TabStop = false;
             this.Añadir.Text = "Peticion";
             this.Añadir.Enter += new System.EventHandler(this.GroupBox1_Enter);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.listacon});
+            this.dataGridView1.Location = new System.Drawing.Point(314, 59);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(126, 183);
+            this.dataGridView1.TabIndex = 26;
+            // 
+            // listacon
+            // 
+            this.listacon.HeaderText = "Lista de conectados";
+            this.listacon.Name = "listacon";
+            this.listacon.ReadOnly = true;
             // 
             // numeroLbl
             // 
@@ -172,6 +196,7 @@
             this.Conectados.Size = new System.Drawing.Size(147, 40);
             this.Conectados.TabIndex = 22;
             this.Conectados.Text = "Conectados";
+            this.Conectados.Click += new System.EventHandler(this.Conectados_Click);
             // 
             // Tantoporciento
             // 
@@ -301,6 +326,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Añadir.ResumeLayout(false);
             this.Añadir.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tablero.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -329,6 +355,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel tablero;
         private System.Windows.Forms.Label amarilloLbl;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn listacon;
     }
 }
 

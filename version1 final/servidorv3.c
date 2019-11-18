@@ -47,21 +47,22 @@ int Pon ( TListaCon *lista, char nombre [20], int socket)
 
 int Eliminar ( TListaCon *lista, char nombre [20] )
 {
-	int encontrado = 0;
 	
 	int pos = DamePosicion(&lista, nombre);
-	printf("%s\n", lista->conectados[pos].nombre);
+	printf("Nombre del que se va: %s\n", lista->conectados[pos].nombre);
 	
-	if(pos == -1){
+	if(pos == -1)
+	{
 		return pos;
 	}
 	else{
-		for(int i = pos; i<lista->num-1; i++){
+		for(int i = pos; i<lista->num-1; i++)
+		{
 			lista->conectados[i].socket = lista->conectados[i+1].socket;
-			strcpy(lista->conectados[i].nombre, lista->conectados[i+1].nombre);
+			//strcpy(lista->conectados[i].nombre, lista->conectados[i+1].nombre);
 		}
 		lista->num--;
-		printf("%s\n", lista->conectados[pos].nombre);
+		printf("Nombre del que se queda su posicion: %s\n", lista->conectados[pos].nombre);
 		return 0;
 	}
 }
@@ -112,11 +113,11 @@ void Cadena (TListaCon *lista, char cadenafinal [100])
 	
 	for (int i=0;i<lista->num;i++){
 		printf("%s\n",lista->conectados[lista->num].nombre);
-		sprintf (cadena,"%s\%s",cadena,lista->conectados[i].nombre);
+		sprintf (cadena,"%s|%s",cadena,lista->conectados[i].nombre);
 		cont ++;
 	}
 	
-	sprintf(cadenafinal,"5/%d\%s", lista->num, cadena);
+	sprintf(cadenafinal,"5/%d%s", lista->num, cadena);
 	printf("%s\n",cadenafinal);
 	
 }
@@ -451,16 +452,28 @@ void *AtenderCliente(void *socket){
 		if (codigo == 0)
 		{ //salimos del bucle
 			
-			terminar = 1;
 			
-			int res = Eliminar(&lista,nombre); 
+			p=strtok(NULL,"/");
+			strcpy(nombre,p);
+			printf("Lista conectados antes de elimiar : %s\n",cadenafinal);			int res = Eliminar(&lista,nombre); 
+			printf("Lista conectados despues de elimiar : %s\n",cadenafinal);
 			if(res==0)
+			{	 
+								Cadena(&lista,cadenafinal);
 				printf("Se ha eliminado correctamente\n");
+				
+				for(int i=0;i<lista.num;i++)
+				{
+					
+					write(sockets[i],cadenafinal, strlen(cadenafinal));						
+				}
+			}
 			else 
+			   {
 				printf("No hay elemento a eliminar!! merluzo\n");
+			   }
 			
-			Cadena(&lista,respuesta);
-			
+			terminar = 1;
 			
 		}
 		
@@ -491,23 +504,19 @@ void *AtenderCliente(void *socket){
 				if(res==1)
 				{
 					printf("Se ha a?adido correctamente--\n");
-				
-				    Cadena(&lista,cadenafinal);
+					
+					Cadena(&lista,cadenafinal);
 					
 					for(int i=0;i<lista.num;i++){
 						write(sockets[i],cadenafinal, strlen(cadenafinal));						
 					}
 				}
 				else 
-				   {
+				{
 					printf("Lista llena !! merluzo\n");
-				   }
+				}
 			}
-			
-			
-	
-		
-			
+
 		}
 		else if (codigo == 2) //consulta 2: edad media de los jugadores que han ganado con el color pasado como parametro
 		{
@@ -524,21 +533,6 @@ void *AtenderCliente(void *socket){
 		}
 		
 		
-	/*	else if (codigo == 6) //dame el socket
-		{
-			int res = DameSocket(&lista, nombre);
-			if(res != -1){
-				sprintf(respuesta,"6/%d",res);
-			}else
-			   sprintf(respuesta,"6/No hay socket para ese jugador");
-		}
-		else if (codigo == 7) //dame la posicion
-		{
-			DamePosicion(&lista, nombre);
-		}
-		
-		
-		*/
 		
 		if (codigo !=0)
 		{
@@ -554,13 +548,14 @@ void *AtenderCliente(void *socket){
 			contador = contador +1;
 			pthread_mutex_unlock( &mutex); //ya puedes interrumpirme
 			
-			// notificar a todos los clientes conectados
+			/*// notificar a todos los clientes conectados
 			char notificacion[20];
 			sprintf (notificacion, "6/%d",contador);
 			
 			int j;
 			for (j=0; j< i; j++)
 				write (sockets[j],notificacion, strlen(notificacion));
+			*/
 		}
 		
 		
@@ -592,7 +587,7 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(9051);
+	serv_adr.sin_port = htons(9100);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind");
 	

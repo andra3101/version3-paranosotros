@@ -22,7 +22,8 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false; //Necesario para que los elementos de los formularios puedan ser
             //accedidos desde threads diferentes a los que los crearon
-        }
+
+    }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -64,7 +65,16 @@ namespace WindowsFormsApplication1
 
                     case 5: // listadeconectados
 
-                        Conectados.Text = mensaje;
+                        /*string[] trozo = Encoding.ASCII.GetString(msg2).Split('-');
+                        int cod = Convert.ToInt32(trozo[1]);
+                        mensaje = trozo[1].Split('\0')[1];
+                        */
+                            Conectados.Text = mensaje;
+                           // MessageBox.Show("si:" + mensaje);
+                        
+
+                     
+
                         break;
 
 
@@ -78,7 +88,7 @@ namespace WindowsFormsApplication1
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.101");
-            IPEndPoint ipep = new IPEndPoint(direc, 9051);
+            IPEndPoint ipep = new IPEndPoint(direc, 9100);
 
 
             //Creamos el socket 
@@ -170,12 +180,14 @@ namespace WindowsFormsApplication1
         private void button3_Click(object sender, EventArgs e)
         {
             //Mensaje de desconexión
-            string mensaje = "0/";
+            string mensaje = "0/"+ nombre.Text + "/";
         
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
             // Nos desconectamos
+       
+            atender.Abort();
             this.BackColor = Color.Gray;
             server.Shutdown(SocketShutdown.Both);
             server.Close();
@@ -238,6 +250,9 @@ namespace WindowsFormsApplication1
 
         }
 
-    
+        private void Conectados_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

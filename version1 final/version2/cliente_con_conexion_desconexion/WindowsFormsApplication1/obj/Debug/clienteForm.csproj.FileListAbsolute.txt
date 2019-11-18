@@ -115,12 +115,11 @@ C:\Users\andra3101\Desktop\version1 final\version1 final\cliente_con_conexion_de
 C:\Users\andra3101\Desktop\version1 final\version1 final\cliente_con_conexion_desconexion\WindowsFormsApplication1\obj\Debug\clienteForm.csproj.CoreCompileInputs.cache
 C:\Users\andra3101\Desktop\version1 final\version1 final\cliente_con_conexion_desconexion\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 C:\Users\andra3101\Desktop\version1 final\version1 final\cliente_con_conexion_desconexion\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-C:\Users\andra3101\Desktop\version1 final\version2\cliente_con_conexion_desconexion\WindowsFormsApplication1\obj\Debug\clienteForm.csprojAssemblyReference.cache
 C:\Users\andra3101\Desktop\version1 final\version2\cliente_con_conexion_desconexion\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 C:\Users\andra3101\Desktop\version1 final\version2\cliente_con_conexion_desconexion\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 C:\Users\andra3101\Desktop\version1 final\version2\cliente_con_conexion_desconexion\WindowsFormsApplication1\obj\Debug\clienteForm.csproj.GenerateResource.cache
-C:\Users\andra3101\Desktop\version1 final\version2\cliente_con_conexion_desconexion\WindowsFormsApplication1\obj\Debug\clienteForm.csproj.CoreCompileInputs.cache
 C:\Users\andra3101\Desktop\version1 final\version2\cliente_con_conexion_desconexion\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 C:\Users\andra3101\Desktop\version1 final\version2\cliente_con_conexion_desconexion\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
 C:\Users\andra3101\Desktop\version1 final\version2\cliente_con_conexion_desconexion\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
 C:\Users\andra3101\Desktop\version1 final\version2\cliente_con_conexion_desconexion\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\andra3101\Desktop\version1 final\version2\cliente_con_conexion_desconexion\WindowsFormsApplication1\obj\Debug\clienteForm.csprojResolveAssemblyReference.cache
